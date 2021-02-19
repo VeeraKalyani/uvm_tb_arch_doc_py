@@ -1,0 +1,81 @@
+1.	Draw a rectangle and write text inside it (using Turtle & Image Draw modules)
+Analyzed the module ImageDraw module : 
+The ImageDraw module provides simple 2D graphics for Image objects. Using below code, the TB diagram is aimed to construct on a .jpg file. Since it is easy to draw shapes/arrows in image file, “Image draw module” has been chosen. In the below script,
+•	Created an empty image *.jpg file
+o	img = Image.new("RGB", (500, 500),"white") 
+•	Drew a rectangle in that image using “ImageDraw” module
+•	Saved the image & using the Image Draw module, inserted the text inside the rectangle (by changing the required dimensions in trial and error manner)
+o	Img1.rectangle(), img1.text() methods
+•	Added that .jpg file into a .docx document & saved that. (using docx module)
+Analyzed & tried with turtle 
+•	doc.add_picture()
+
+============================================================================================================
+Using ImageDraw Module :
+
+#This “docx” module is to manipulate with docs like MS Word. Used it to add picture to the document
+import docx
+#This “pillow” module to import Image draw module
+from PIL import Image,ImageDraw
+#Taking the handle “doc” for docx
+doc = docx.Document()
+#Opening an image of .jpg or .png with 500 * 500 dimension
+img = Image.new("RGB", (500, 500),"white") 
+# create an image draw handle
+img1 = ImageDraw.Draw(img)
+#Drawing a rectangle using Imagedraw module with below dimensions on that already created image 
+img1.rectangle((200,125,300,200),fill ="orange", outline = "black",width = 1)
+#Added the text to that rectangle using text() method
+img1.text((210, 150), "CHECK TEXT", fill = "black",align = "center")
+#This will display that image
+img.show()
+#Choose the file path accordingly to store that image
+img.save('C:\\Users\\path \\line.jpg');
+#This is to open a MS Word document and add an image on it.
+doc.add_picture('C:\\path \\line.jpg');
+doc.save('C:\\path\\filename.jpg);
+
+
+
+Using Turtle :
+
+•	“Turtle” is a pre-installed Python library that enables users to create pictures and shapes 
+•	Created rectangle by traversing via directions and inserted text  inside the rectangle
+#Choosing the “TURTLE” library
+from turtle import *
+# Choose Color for rectangle
+color("orange")
+# Enabling fill to color the shape
+begin_fill()
+# Traverse in directions, to draw rectangle
+#Move forward direction of 300 units (length of rectangle)
+forward(300);
+#Turn the pointer to right direction(like at 90 degree)
+right(90)
+#Move forward 150 units after turning right (breadth of rect)
+forward(150)
+#Turn the pointer to right direction(like at 90 degree)
+right(90)
+#Move forward 300 units after turning right (length of rect)
+forward(300);
+#Turn the pointer to right direction(like at 90 degree)
+right(90)
+#Move forward 150 units after turning right (breadth of rect)
+forward(150)
+#Turn the pointer to right direction(like at 90 degree)
+right(90)
+# End the coloring inside that rectangle
+end_fill()
+#Choose color to write inside rectangle
+color("BLACK") # Choose Black color to write
+#Enabling the text fill color
+begin_fill()
+#This penup feature is to enable the pointer
+penup()
+#Fixing the pointer location from where to start the text inside rectangle
+forward (150)
+#To make the text inside the rectangle (not above the rectangle)
+left(65)
+backward (20)
+#Write the desired text that needs to be written onto the rectangle
+write("TEXT INSIDE RECTANGLE USING TURTLE", True, align="center")
